@@ -20,7 +20,7 @@ def get_posts(**kwargs):
         'location',
         'author'
     ).annotate(comment_count=Count('comments')
-                ).filter(**kwargs).order_by(*Post._meta.ordering)
+    ).filter(**kwargs).order_by(*Post._meta.ordering)
 
 
 def get_paginator(request, queryset,
