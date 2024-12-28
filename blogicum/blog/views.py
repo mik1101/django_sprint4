@@ -15,12 +15,13 @@ NUMBER_OF_PAGINATOR_PAGES = 10
 
 def get_posts(**kwargs):
     """Получение постов с учётом фильтра"""
-    return Post.objects.select_related(
-        'category',
-        'location',
-        'author'
-    ).annotate(comment_count=Count('comments')
-    ).filter(**kwargs).order_by(*Post._meta.ordering)
+    return (
+        Post.objects.select_related("category", "location", "author")
+        .annotate(comment_count=Count("comments"))
+        .filter(**kwargs)
+        .order_by(*Post._meta.ordering)
+    )
+
 
 
 def get_paginator(request, queryset,
