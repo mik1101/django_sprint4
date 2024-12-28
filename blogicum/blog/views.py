@@ -23,7 +23,6 @@ def get_posts(**kwargs):
     )
 
 
-
 def get_paginator(request, queryset,
                   number_of_pages=NUMBER_OF_PAGINATOR_PAGES):
     """Представление данных в виде пагинатора"""
